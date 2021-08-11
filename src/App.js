@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
           Learn React
         </a>
 
-      
+      <Button
+        title="Press me"
+        color="#f194ff"
+        onPress={() => Alert.alert('Button with adjusted color pressed')}
+      />
 
 
 
