@@ -6,6 +6,28 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
+    $.ajax({
+      type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': 'AKIAVX27EFOE4IHYA7WW',
+        'message': {
+          'from_email': 't3styt3st3rt0n@gmail.com',
+          'to': [
+              {
+                'email': 'david@telecomstack.com',
+                'name': 'David',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'Test',
+          'html': 'AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
+        }
+      }
+     }).done(function(response) {
+       console.log(response); // if you're into that sorta thing
+     });
   }
   return (
     <div className="App">
@@ -26,6 +48,9 @@ function App() {
         </a>
 
         <form onSubmit={handleSubmit}>
+          <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
           <button type="submit">Submit</button>
         </form>
 
