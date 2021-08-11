@@ -8,7 +8,7 @@ function App() {
     console.log('You clicked submit.');
     $.ajax({
       type: 'POST',
-      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      url: '	email-smtp.eu-west-1.amazonaws.com',
       data: {
         'key': 'AKIAVX27EFOE4IHYA7WW',
         'message': {
