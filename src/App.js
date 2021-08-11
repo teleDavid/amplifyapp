@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-//var AWS = require('aws-sdk');
 
 /*var params = {
   MessageBody: 'Teststststtststststststststtststststststststststt',
@@ -14,6 +13,7 @@ import './App.css';
 };*/
 
 function App() {
+  var AWS = require('aws-sdk');
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
