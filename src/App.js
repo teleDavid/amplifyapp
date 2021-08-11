@@ -21,11 +21,7 @@ function App() {
           Learn React
         </a>
 
-      <Button
-        title="Press me"
-        color="#f194ff"
-        onPress={() => Alert.alert('Button with adjusted color pressed')}
-      />
+      
 
 
 
@@ -34,8 +30,6 @@ function App() {
   );
 }
 
-function myFunction() {
-  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-}
+
 
 export default App;
