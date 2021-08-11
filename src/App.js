@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -21,17 +25,14 @@ function App() {
           Learn React
         </a>
 
-        <p id="demo" onclick="myFunction()">Clicffk me.</p>
-
+        <form onSubmit={handleSubmit}>
+          <button type="submit">Submit</button>
+        </form>
 
 
       </header>
     </div>
   );
-}
-
-function myFunction() {
-  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
 
 export default App;
