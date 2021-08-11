@@ -70,9 +70,6 @@ function App() {
 
         <form onSubmit={handleSubmit}>
           <button type="submit">Submit</button>
-          <button type="submit">Submit</button>
-          <button type="submit">Submit</button>
-          <button type="submit">Submit</button>
         </form>
 
 
