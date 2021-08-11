@@ -21,7 +21,11 @@ function App() {
           Learn React
         </a>
 
-        <p id="demo" onclick="myFunction()">Clicffk me.</p>
+      <Button
+        title="Press me"
+        color="#f194ff"
+        onPress={() => Alert.alert('Button with adjusted color pressed')}
+      />
 
 
 
