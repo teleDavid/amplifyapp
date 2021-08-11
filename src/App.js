@@ -51,6 +51,9 @@ var params = {
   ],
 };
 
+var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+
+
 function App() {
 
   function handleSubmit(e) {
