@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-var AWS = require('aws-sdk');
+//var AWS = require('aws-sdk');
 
 /*var params = {
   MessageBody: 'Teststststtststststststststtststststststststststt',
