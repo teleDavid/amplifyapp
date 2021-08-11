@@ -11,9 +11,11 @@ import './App.css';
      }
   }
 };*/
+var AWS = require('aws-sdk');
+
 
 function App() {
-  var AWS = require('aws-sdk');
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
