@@ -1,12 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+
+var params = {
+  MessageBody: 'Teststststtststststststststtststststststststststt',
+  MessageAttributes: {
+     attrName: {
+        DataType: 'Binary',
+        BinaryValue: 'example text'
+     }
+  }
+};
 
 function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
-    $.ajax({
+
+    AWS.config.getCredentials(function(err) {
+      if (err) console.log(err.stack);
+      // credentials not loaded
+      else {
+        console.log("Access key:", AWS.config.credentials.accessKeyId);
+      }
+    });
+    /*$.ajax({
+
+      
       type: 'POST',
       url: '	email-smtp.eu-west-1.amazonaws.com',
       data: {
@@ -27,7 +48,7 @@ function App() {
       }
      }).done(function(response) {
        console.log(response); // if you're into that sorta thing
-     });
+     });*/
   }
   return (
     <div className="App">
