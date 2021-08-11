@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+var AWS = require('aws-sdk');
 
-var params = {
+/*var params = {
   MessageBody: 'Teststststtststststststststtststststststststststt',
   MessageAttributes: {
      attrName: {
@@ -11,7 +11,7 @@ var params = {
         BinaryValue: 'example text'
      }
   }
-};
+};*/
 
 function App() {
   function handleSubmit(e) {
