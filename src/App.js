@@ -21,10 +21,8 @@ function App() {
           Learn React
         </a>
 
-        <button id = "demo"
-          onclick="test()"> 
-                Click me
-        </button>
+        <p id="demo" onclick="myFunction()">Click me.</p>
+
 
 
       </header>
@@ -32,7 +30,7 @@ function App() {
   );
 }
 
-function test(){
+function myFunction() {
   document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
 
