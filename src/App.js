@@ -30,10 +30,8 @@ function App() {
   );
 }
 
-<script>
 function myFunction() {
-  document.getElementById("demo").innerHTML = "YOU CLICKED ME!"
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 }
-</script>
 
 export default App;
