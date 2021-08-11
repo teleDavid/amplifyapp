@@ -21,17 +21,21 @@ function App() {
           Learn React
         </a>
 
-        <button 
-          onclick="myFunction()">
-            <a>
+        <p id = "demo"
+          onclick="test()">
+            
                 Click me
-            </a>
-        </button>
+        </p>
 
 
       </header>
     </div>
   );
+}
+
+function test(){
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+
 }
 
 export default App;
