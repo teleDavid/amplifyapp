@@ -21,7 +21,8 @@ function App() {
           Learn React
         </a>
 
-        <p id="demo" onclick="myFunction()">Click me.</p>
+        <p id="demo">Clfrggick me.</p>
+        document.getElementById("demo").onclick = function() {myFunction()};
 
 
 
