@@ -11,7 +11,7 @@ import './App.css';
      }
   }
 };*/
-var AWS = require('aws-sdk');
+var AWS;
 
 
 function App() {
