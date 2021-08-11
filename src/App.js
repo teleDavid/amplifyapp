@@ -17,6 +17,40 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
 });
 
+var params = {
+  Destination: { /* required */
+    CcAddresses: [
+      'EMAIL_ADDRESS',
+      /* more items */
+    ],
+    ToAddresses: [
+      'david@telecomstack.com',
+      /* more items */
+    ]
+  },
+  Message: { /* required */
+    Body: { /* required */
+      Html: {
+       Charset: "UTF-8",
+       Data: "HTML_FORMAT_BODY"
+      },
+      Text: {
+       Charset: "UTF-8",
+       Data: "TEXT_FORMAT_BODY"
+      }
+     },
+     Subject: {
+      Charset: 'UTF-8',
+      Data: 'Test email'
+     }
+    },
+  Source: 't3styt3st3rt0n@gmail.com', /* required */
+  ReplyToAddresses: [
+     'EMAIL_ADDRESS',
+    /* more items */
+  ],
+};
+
 function App() {
 
   function handleSubmit(e) {
@@ -30,6 +64,14 @@ function App() {
         console.log("Access key:", AWS.config.credentials.accessKeyId);
       }
     });
+
+    sendPromise.then(
+      function(data) {
+        console.log(data.MessageId);
+      }).catch(
+        function(err) {
+        console.error(err, err.stack);
+      });
     /*$.ajax({
 
       
