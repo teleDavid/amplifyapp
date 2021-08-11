@@ -1,45 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Telecomstack</h1>
-        <p>
-          Working Prototype
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+const Separator = () => (
+  <View style={styles.separator} />
+);
 
-          Learn React
-        </a>
-
-      <View>
-        <Text style={styles.title}>
-          The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
-        </Text>
+const App = () => (
+  <SafeAreaView style={styles.container}>
+    <View>
+      <Text style={styles.title}>
+        The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
+      </Text>
+      <Button
+        title="Press me"
+        onPress={() => Alert.alert('Simple Button pressed')}
+      />
+    </View>
+    <Separator />
+    <View>
+      <Text style={styles.title}>
+        Adjust the color in a way that looks standard on each platform. On  iOS, the color prop controls the color of the text. On Android, the color adjusts the background color of the button.
+      </Text>
+      <Button
+        title="Press me"
+        color="#f194ff"
+        onPress={() => Alert.alert('Button with adjusted color pressed')}
+      />
+    </View>
+    <Separator />
+    <View>
+      <Text style={styles.title}>
+        All interaction for the component are disabled.
+      </Text>
+      <Button
+        title="Press me"
+        disabled
+        onPress={() => Alert.alert('Cannot press this one')}
+      />
+    </View>
+    <Separator />
+    <View>
+      <Text style={styles.title}>
+        This layout strategy lets the title define the width of the button.
+      </Text>
+      <View style={styles.fixToText}>
         <Button
-          title="Press me"
-          onPress={() => Alert.alert('Simple Button pressed')}
+          title="Left button"
+          onPress={() => Alert.alert('Left button pressed')}
+        />
+        <Button
+          title="Right button"
+          onPress={() => Alert.alert('Right button pressed')}
         />
       </View>
-
-
-
-      </header>
-    </div>
-  );
-}
-
-
+    </View>
+  </SafeAreaView>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -60,8 +76,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-
-
 });
 
 export default App;
