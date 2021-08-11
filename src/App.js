@@ -20,7 +20,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 var params = {
   Destination: { /* required */
     CcAddresses: [
-      'EMAIL_ADDRESS',
+      'davenator@live.ie',
       /* more items */
     ],
     ToAddresses: [
@@ -46,7 +46,7 @@ var params = {
     },
   Source: 't3styt3st3rt0n@gmail.com', /* required */
   ReplyToAddresses: [
-     'EMAIL_ADDRESS',
+     'david@telecomstack.com',
     /* more items */
   ],
 };
