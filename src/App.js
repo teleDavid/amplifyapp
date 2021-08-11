@@ -17,6 +17,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+        <button 
+          onclick="myFunction()">Click me
+        </button>
+
           Learn React
         </a>
       </header>
