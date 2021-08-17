@@ -119,7 +119,11 @@ function App() {
         </a>
 
         <form onSubmit={handleSubmit}>
-          <button type="submit">Submit</button>
+          <button 
+            type="submit"
+            title = "Submit"
+            color="#f194ff"
+          />
         </form>
 
 
