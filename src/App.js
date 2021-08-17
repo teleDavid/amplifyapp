@@ -11,7 +11,7 @@ import './App.css';
      }
   }
 };*/
-var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+var AWS = require('aws-sdk');
 AWS.config.region = 'eu-west-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
