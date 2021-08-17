@@ -67,7 +67,7 @@ function App() {
       }
     });
 
-    var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+    /*var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
     sendPromise.then(
       function(data) {
@@ -75,7 +75,8 @@ function App() {
       }).catch(
         function(err) {
         console.error(err, err.stack);
-      });
+      });*/
+    
     /*$.ajax({
 
       
