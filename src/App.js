@@ -58,7 +58,7 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
-
+    console.log("Access key:", AWS.config.credentials.accessKeyId);
     AWS.config.getCredentials(function(err) {
       if (err) console.log(err.stack);
       // credentials not loaded
