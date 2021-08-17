@@ -51,7 +51,6 @@ var params = {
   ],
 };
 
-var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
 
 function App() {
@@ -67,6 +66,8 @@ function App() {
         console.log("Access key:", AWS.config.credentials.accessKeyId);
       }
     });
+
+    var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
     sendPromise.then(
       function(data) {
@@ -120,10 +121,7 @@ function App() {
 
         <form onSubmit={handleSubmit}>
           <button 
-            type="submit"
-            title = "Submit"
-            color="#f194ff"
-          />
+            type="submit">Submit</button>
         </form>
 
 
