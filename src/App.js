@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { withAuthenticator } from 'aws-amplify-react-native'
+
 
 /*var params = {
   MessageBody: 'Teststststtststststststststtststststststststststt',
@@ -131,4 +133,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
