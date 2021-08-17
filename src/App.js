@@ -1,10 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { withAuthenticator } from 'aws-amplify-react-native'
-import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
 
 /*var params = {
   MessageBody: 'Teststststtststststststststtststststststststststt',
@@ -15,7 +11,7 @@ Amplify.configure(awsconfig);
      }
   }
 };*/
-var AWS = require('aws-sdk');
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
@@ -55,6 +51,7 @@ var params = {
   ],
 };
 
+var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
 
 function App() {
@@ -62,7 +59,7 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
-    console.log("Access key:", AWS.config.credentials.accessKeyId);
+
     AWS.config.getCredentials(function(err) {
       if (err) console.log(err.stack);
       // credentials not loaded
@@ -71,16 +68,13 @@ function App() {
       }
     });
 
-    /*var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
-
     sendPromise.then(
       function(data) {
         console.log(data.MessageId);
       }).catch(
         function(err) {
         console.error(err, err.stack);
-      });*/
-    
+      });
     /*$.ajax({
 
       
@@ -125,8 +119,7 @@ function App() {
         </a>
 
         <form onSubmit={handleSubmit}>
-          <button 
-            type="submit">Submit</button>
+          <button type="submit">Submit</button>
         </form>
 
 
@@ -135,4 +128,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default App;
