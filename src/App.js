@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 //import { withAuthenticator } from 'aws-amplify-react-native'
 //import Amplify, { Auth } from 'aws-amplify';
 //import awsconfig from './aws-exports';
@@ -71,6 +72,7 @@ function App() {
     /*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
     });*/
+    AWS.config.credentials.refresh(callback);
     console.log("Access key:", AWS.config.credentials);
     
    /*AWS.config.getCredentials(function(err) {
