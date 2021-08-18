@@ -1,150 +1,91 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-//import { withAuthenticator } from 'aws-amplify-react-native'
-//import Amplify, { Auth } from 'aws-amplify';
-//import awsconfig from './aws-exports';
-//Amplify.configure(awsconfig);
-
-/*var params = {
-  MessageBody: 'Teststststtststststststststtststststststststststt',
-  MessageAttributes: {
-     attrName: {
-        DataType: 'Binary',
-        BinaryValue: 'example text'
-     }
-  }
-};*/
-var AWS = require('aws-sdk/dist/aws-sdk-react-native');
-AWS.config.region = 'eu-west-1'; // Region
-//var credentials = new AWS.SharedIniFileCredentials({profile: 'david'});
-//AWS.config.credentials = credentials;
-var cred = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
-});
-AWS.config.update({
-  credentials: cred
-});
-
-
-var params = {
-  Destination: { /* required */
-    CcAddresses: [
-      'davenator@live.ie',
-      /* more items */
-    ],
-    ToAddresses: [
-      'david@telecomstack.com',
-      /* more items */
-    ]
-  },
-  Message: { /* required */
-    Body: { /* required */
-      Html: {
-       Charset: "UTF-8",
-       Data: "HTML_FORMAT_BODY"
-      },
-      Text: {
-       Charset: "UTF-8",
-       Data: "TEXT_FORMAT_BODY"
-      }
-     },
-     Subject: {
-      Charset: 'UTF-8',
-      Data: 'Test email'
-     }
-    },
-  Source: 't3styt3st3rt0n@gmail.com', /* required */
-  ReplyToAddresses: [
-     'david@telecomstack.com',
-    /* more items */
-  ],
-};
-
-
-
-function App() {
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log('You clicked submit.');
-    /*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
-    });*/
-    AWS.config.credentials.refresh(callback);
-    console.log("Access key:", AWS.config.credentials);
-    
-   /*AWS.config.getCredentials(function(err) {
-      if (err) console.log(err.stack);
-      // credentials not loaded
-      else {
-        console.log("Access key:", AWS.config.credentials.accessKeyId);
-      }
-    });
-
-    /*var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
-
-    sendPromise.then(
-      function(data) {
-        console.log(data.MessageId);
-      }).catch(
-        function(err) {
-        console.error(err, err.stack);
-      });*/
-    
-    /*$.ajax({
-
-      
-      type: 'POST',
-      url: '	email-smtp.eu-west-1.amazonaws.com',
-      data: {
-        'key': 'AKIAVX27EFOE4IHYA7WW',
-        'message': {
-          'from_email': 't3styt3st3rt0n@gmail.com',
-          'to': [
-              {
-                'email': 'david@telecomstack.com',
-                'name': 'David',
-                'type': 'to'
-              }
-            ],
-          'autotext': 'true',
-          'subject': 'Test',
-          'html': 'AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
-        }
-      }
-     }).done(function(response) {
-       console.log(response); // if you're into that sorta thing
-     });*/
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Telecomstack</h1>
-        <p>
-          Working Prototype
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          Learn React
-        </a>
-
-        <form onSubmit={handleSubmit}>
-          <button 
-            type="submit">Submit</button>
-        </form>
-
-
-      </header>
-    </div>
-  );
-}
-
-export default App;
+import React, { useState } from "javascriptv3/example_code/reactnative/App";
+	import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+	
+	import {
+	  S3Client,
+	  CreateBucketCommand,
+	  DeleteBucketCommand,
+	} from "@aws-sdk/client-s3";
+	import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+	import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+	
+	const App = () => {
+	  const [bucketName, setBucketName] = useState("");
+	  const [successMsg, setSuccessMsg] = useState("");
+	  const [errorMsg, setErrorMsg] = useState("");
+	
+	  // Replace REGION with the appropriate AWS Region, such as 'us-east-1'.
+	  const region = "eu-west-1";
+	  const client = new S3Client({
+	    region,
+	    credentials: fromCognitoIdentityPool({
+	      client: new CognitoIdentityClient({ region }),
+	      // Replace IDENTITY_POOL_ID with an appropriate Amazon Cognito Identity Pool ID for, such as 'us-east-1:xxxxxx-xxx-4103-9936-b52exxxxfd6'.
+	      identityPoolId: "eu-west-1:92b669d5-3f6f-42e4-ac66-937802f7c608",
+	    }),
+	  });
+	
+	  const createBucket = async () => {
+	    setSuccessMsg("");
+	    setErrorMsg("");
+	
+	    try {
+	      await client.send(new CreateBucketCommand({ Bucket: bucketName }));
+	      setSuccessMsg(`Bucket "${bucketName}" created.`);
+	    } catch (e) {
+	      setErrorMsg(e);
+	    }
+	  };
+	
+	  const deleteBucket = async () => {
+	    setSuccessMsg("");
+	    setErrorMsg("");
+	
+	    try {
+	      await client.send(new DeleteBucketCommand({ Bucket: bucketName }));
+	      setSuccessMsg(`Bucket "${bucketName}" deleted.`);
+	    } catch (e) {
+	      setErrorMsg(e);
+	    }
+	  };
+	
+	  return (
+	    <View style={styles.container}>
+	      <Text style={{ color: "green" }}>
+	        {successMsg ? `Success: ${successMsg}` : ``}
+	      </Text>
+	      <Text style={{ color: "red" }}>
+	        {errorMsg ? `Error: ${errorMsg}` : ``}
+	      </Text>
+	      <View>
+	        <TextInput
+	          style={styles.textInput}
+	          onChangeText={(text) => setBucketName(text)}
+	          autoCapitalize={"none"}
+	          value={bucketName}
+	          placeholder={"Enter Bucket Name"}
+	        />
+	        <Button
+	          backroundColor="#68a0cf"
+	          title="Create Bucket"
+	          onPress={createBucket}
+	        />
+	        <Button
+	          backroundColor="#68a0cf"
+	          title="Delete Bucket"
+	          onPress={deleteBucket}
+	        />
+	      </View>
+	    </View>
+	  );
+	};
+	
+	const styles = StyleSheet.create({
+	  container: {
+	    flex: 1,
+	    alignItems: "center",
+	    justifyContent: "center",
+	  },
+	});
+	
+	export default App;
