@@ -17,6 +17,8 @@ import './App.css';
 };*/
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
+var credentials = new AWS.SharedIniFileCredentials({profile: 'david'});
+AWS.config.credentials = credentials;
 
 
 var params = {
@@ -60,9 +62,9 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    /*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
-    });
+    });*/
     console.log("Access key:", AWS.config.credentials);
     
    /*AWS.config.getCredentials(function(err) {
