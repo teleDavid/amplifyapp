@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { withAuthenticator } from 'aws-amplify-react-native'
+//import { withAuthenticator } from 'aws-amplify-react-native'
 //import Amplify, { Auth } from 'aws-amplify';
 //import awsconfig from './aws-exports';
 //Amplify.configure(awsconfig);
@@ -15,11 +15,11 @@ import { withAuthenticator } from 'aws-amplify-react-native'
      }
   }
 };*/
-var AWS = require('aws-sdk');
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
-/*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
-});*/
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'eu-west-1:ae7efa87-7e95-44b8-b95c-e8431db1c086',
+});
 
 var params = {
   Destination: { /* required */
@@ -62,7 +62,7 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('You clicked submit.');
-    console.log("Access key:", AWS.config.credentials.accessKeyId);
+    console.log("Access key:", AWS.config.credentials);
    /*AWS.config.getCredentials(function(err) {
       if (err) console.log(err.stack);
       // credentials not loaded
@@ -135,4 +135,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default App;
