@@ -10,8 +10,8 @@ import {
   CreateBucketCommand,
   DeleteBucketCommand,
 } from "@aws-sdk/client-s3";
-import  CognitoIdentityClient  from "@aws-sdk/client-cognito-identity";
-import  fromCognitoIdentityPool  from "@aws-sdk/credential-provider-cognito-identity";
+import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
 const App = () => {
   const [bucketName, setBucketName] = useState("");
