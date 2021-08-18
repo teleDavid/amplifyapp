@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, StyleSheet, Text, TextInput, View } from "react";
-import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
-import aphroditeInterface from 'react-with-styles-interface-aphrodite';
-ThemedStyleSheet.registerInterface(aphroditeInterface);
+
 
 
 import {
@@ -56,7 +54,7 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <div className="App">
       <Text style={{ color: "green" }}>
         {successMsg ? `Success: ${successMsg}` : ``}
       </Text>
@@ -82,16 +80,10 @@ const App = () => {
           onPress={deleteBucket}
         />
       </View>
-    </View>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+
 
 export default App;
