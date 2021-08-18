@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, StyleSheet, Text, TextInput, View } from "react";
+import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+ThemedStyleSheet.registerInterface(aphroditeInterface);
+
 
 import {
   S3Client,
