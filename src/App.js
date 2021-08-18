@@ -83,7 +83,27 @@ const App = () => {
         />
       </View>
     </div>*/
-    h
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Telecomstack</h1>
+        <p>
+          Working Prototype
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <form onSubmit={handleSubmit}>
+          <button 
+            type="submit">Submit</button>
+        </form>
+      </header>
+    </div>
   );
 };
 
