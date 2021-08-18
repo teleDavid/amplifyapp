@@ -54,7 +54,9 @@ const App = () => {
   };
 
   return (
+    /*
     <div className="App">
+      
       <Text style={{ color: "green" }}>
         {successMsg ? `Success: ${successMsg}` : ``}
       </Text>
@@ -80,7 +82,8 @@ const App = () => {
           onPress={deleteBucket}
         />
       </View>
-    </div>
+    </div>*/
+    h
   );
 };
 
