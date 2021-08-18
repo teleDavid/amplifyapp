@@ -63,7 +63,7 @@ const App = () => {
       </Text>
       <View>
         <TextInput
-          style={styles.textInput}
+          
           onChangeText={(text) => setBucketName(text)}
           autoCapitalize={"none"}
           value={bucketName}
