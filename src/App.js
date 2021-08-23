@@ -71,6 +71,13 @@ const App = () =>{
           Learn React
         </a>
       </header>
+
+      <Text style={{ color: "green" }}>
+	        {successMsg ? `Success: ${successMsg}` : ``}
+      </Text>
+      <Text style={{ color: "red" }}>
+	        {errorMsg ? `Error: ${errorMsg}` : ``}
+      </Text>
     </div>
   );
 };
