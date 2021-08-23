@@ -15,6 +15,13 @@ import {
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+AWS.config.region = 'eu-west-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'eu-west-1:92b669d5-3f6f-42e4-ac66-937802f7c608',
+});
+
+
 const App = () =>{
 
   const [bucketName, setBucketName] = useState("");
@@ -31,6 +38,16 @@ const App = () =>{
       identityPoolId: "eu-west-1:92b669d5-3f6f-42e4-ac66-937802f7c608",
     }),
   });
+
+  
+  AWS.config.getCredentials(function(err) {
+    if (err) console.log(err.stack);
+    // credentials not loaded
+    else {
+      console.log("Access key:", AWS.config.credentials.accessKeyId);
+    }
+  });
+
 
   const createBucket = async () => {
     setSuccessMsg("");
