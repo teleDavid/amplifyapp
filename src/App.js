@@ -72,12 +72,12 @@ const App = () =>{
         </a>
       </header>
 
-      <Text style={{ color: "green" }}>
+      <text style={{ color: "green" }}>
 	        {successMsg ? `Success: ${successMsg}` : ``}
-      </Text>
-      <Text style={{ color: "red" }}>
+      </text>
+      <text style={{ color: "red" }}>
 	        {errorMsg ? `Error: ${errorMsg}` : ``}
-      </Text>
+      </text>
     </div>
   );
 };
