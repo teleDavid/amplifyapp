@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Auth } from 'aws-amplify';
+
 import { Button, StyleSheet, Text, TextInput, View } from "react";
 
 
@@ -14,6 +16,7 @@ import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
 const App = () => {
+  /*
   const [bucketName, setBucketName] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -51,7 +54,7 @@ const App = () => {
     } catch (e) {
       setErrorMsg(e);
     }
-  };
+  };*/
 
   return (
     /*
