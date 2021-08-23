@@ -15,7 +15,7 @@ import {
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
-function App() {
+const App = () =>{
 
   const [bucketName, setBucketName] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
@@ -73,8 +73,6 @@ function App() {
       </header>
     </div>
   );
-}
-
-
+}}
 
 export default App;
