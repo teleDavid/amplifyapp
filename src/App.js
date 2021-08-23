@@ -5,7 +5,10 @@ import { Auth } from 'aws-amplify';
 
 import { Button, StyleSheet, Text, TextInput, View } from "react";
 
-
+import {
+  VerifyEmailIdentityCommand
+}  from "@aws-sdk/client-ses";
+import { sesClient } from "./libs/sesClient.js";
 
 import {
   S3Client,
@@ -28,6 +31,9 @@ const App = () =>{
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
+  const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
+
+
   // Replace REGION with the appropriate AWS Region, such as 'us-east-1'.
   const region = "eu-west-1";
   const client = new S3Client({
@@ -39,7 +45,7 @@ const App = () =>{
     }),
   });
 
-  
+
   AWS.config.getCredentials(function(err) {
     if (err) console.log(err.stack);
     // credentials not loaded
@@ -47,6 +53,16 @@ const App = () =>{
       console.log("Access key:", AWS.config.credentials.accessKeyId);
     }
   });
+
+  const run = async () => {
+    try {
+      const data = await sesClient.send(new VerifyEmailIdentityCommand(params));
+      console.log("Success.", data);
+      return data; // For unit tests.
+    } catch (err) {
+      console.log("Error", err.stack);
+    }
+  };
 
 
   const createBucket = async () => {
