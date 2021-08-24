@@ -16,7 +16,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-id
 /*import {
   VerifyEmailIdentityCommand
 }  from "@aws-sdk/client-ses";*/
-import { sesClient } from "./libs/sesClient.js";
+import { sesClient } from "./lib/sesClient.js";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
