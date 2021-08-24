@@ -13,9 +13,9 @@ import {
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
-import {
+/*import {
   VerifyEmailIdentityCommand
-}  from "@aws-sdk/client-ses";
+}  from "@aws-sdk/client-ses";*/
 //import { sesClient } from "./libs/sesClient.js";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
