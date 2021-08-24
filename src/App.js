@@ -31,7 +31,7 @@ const App = () =>{
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
+  //const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
 
 
   // Replace REGION with the appropriate AWS Region, such as 'us-east-1'.
