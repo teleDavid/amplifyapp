@@ -50,17 +50,7 @@ const App = () =>{
     }
   });
 
-  const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
-
-  const run = async () => {
-    try {
-      const data = await sesClient.send(new VerifyEmailIdentityCommand(params));
-      console.log("Success.", data);
-      return data; // For unit tests.
-    } catch (err) {
-      console.log("Error", err.stack);
-    }
-  };
+  
 
   const createBucket = async () => {
     setSuccessMsg("");
@@ -72,7 +62,6 @@ const App = () =>{
       setErrorMsg(e);
     }
   };
-  
   const deleteBucket = async () => {
     setSuccessMsg("");
     setErrorMsg("");
