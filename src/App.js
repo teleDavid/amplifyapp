@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Auth } from 'aws-amplify';
+
 import { Button, StyleSheet, Text, TextInput, View } from "react";
+
 import {
   S3Client,
   CreateBucketCommand,
@@ -10,6 +12,11 @@ import {
 } from "@aws-sdk/client-s3";
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+
+import {
+  VerifyEmailIdentityCommand
+}  from "@aws-sdk/client-ses";
+import { sesClient } from "./libs/sesClient.js";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
@@ -43,6 +50,17 @@ const App = () =>{
     }
   });
 
+  const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
+
+  const run = async () => {
+    try {
+      const data = await sesClient.send(new VerifyEmailIdentityCommand(params));
+      console.log("Success.", data);
+      return data; // For unit tests.
+    } catch (err) {
+      console.log("Error", err.stack);
+    }
+  };
 
   const createBucket = async () => {
     setSuccessMsg("");
@@ -54,6 +72,7 @@ const App = () =>{
       setErrorMsg(e);
     }
   };
+  
   const deleteBucket = async () => {
     setSuccessMsg("");
     setErrorMsg("");
