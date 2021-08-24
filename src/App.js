@@ -54,7 +54,7 @@ const App = () =>{
     }
   });
 
-  const run = async () => {
+  /*const run = async () => {
     try {
       const data = await sesClient.send(new VerifyEmailIdentityCommand(params));
       console.log("Success.", data);
@@ -62,7 +62,7 @@ const App = () =>{
     } catch (err) {
       console.log("Error", err.stack);
     }
-  };
+  };*/
 
 
   const createBucket = async () => {
