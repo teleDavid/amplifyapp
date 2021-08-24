@@ -84,7 +84,8 @@ const App = () =>{
     }
   });
 
-
+  function handleSubmit(e) {
+    e.preventDefault();
   var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
   sendPromise.then(
     function(data) {
@@ -93,7 +94,7 @@ const App = () =>{
       function(err) {
       console.error(err, err.stack);
   });
-
+}
 
   const createBucket = async () => {
     setSuccessMsg("");
@@ -131,6 +132,12 @@ const App = () =>{
           Learn React
         </a>
       </header>
+
+      <form onSubmit={handleSubmit}>
+          <button 
+            type="submit">Submit</button>
+      </form>
+
       <text style={{ color: "green" }}>
 	        {successMsg ? `Success: ${successMsg}` : ``}
       </text>
