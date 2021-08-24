@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Auth } from 'aws-amplify';
-
 import { Button, StyleSheet, Text, TextInput, View } from "react";
-
-import {
-  VerifyEmailIdentityCommand
-}  from "@aws-sdk/client-ses";
-import { sesClient } from "./libs/sesClient.js";
-
 import {
   S3Client,
   CreateBucketCommand,
@@ -30,10 +23,6 @@ const App = () =>{
   const [bucketName, setBucketName] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-
-  //const params = { EmailAddress: "t3styt3st3rt0n@gmail.com" }; //ADDRESS@DOMAIN.EXT; e.g., name@example.com
-
-
   // Replace REGION with the appropriate AWS Region, such as 'us-east-1'.
   const region = "eu-west-1";
   const client = new S3Client({
@@ -54,21 +43,10 @@ const App = () =>{
     }
   });
 
-  /*const run = async () => {
-    try {
-      const data = await sesClient.send(new VerifyEmailIdentityCommand(params));
-      console.log("Success.", data);
-      return data; // For unit tests.
-    } catch (err) {
-      console.log("Error", err.stack);
-    }
-  };*/
-
 
   const createBucket = async () => {
     setSuccessMsg("");
     setErrorMsg("");
-
     try {
       await client.send(new CreateBucketCommand({ Bucket: bucketName }));
       setSuccessMsg(`Bucket "${bucketName}" created.`);
@@ -76,11 +54,9 @@ const App = () =>{
       setErrorMsg(e);
     }
   };
-
   const deleteBucket = async () => {
     setSuccessMsg("");
     setErrorMsg("");
-
     try {
       await client.send(new DeleteBucketCommand({ Bucket: bucketName }));
       setSuccessMsg(`Bucket "${bucketName}" deleted.`);
@@ -104,7 +80,6 @@ const App = () =>{
           Learn React
         </a>
       </header>
-
       <text style={{ color: "green" }}>
 	        {successMsg ? `Success: ${successMsg}` : ``}
       </text>
@@ -114,5 +89,4 @@ const App = () =>{
     </div>
   );
 };
-
 export default App;
