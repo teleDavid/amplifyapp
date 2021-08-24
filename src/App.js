@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Auth } from 'aws-amplify';
+//import { Auth } from 'aws-amplify';
 
-import { Button, StyleSheet, Text, TextInput, View } from "react";
+//import { Button, StyleSheet, Text, TextInput, View } from "react";
 
 import {
   S3Client,
@@ -133,8 +133,8 @@ const App = () =>{
         </a>
       </header>
 
-      <form onSubmit={handleSubmit}>
-          <button 
+      <form classname="App-form" onSubmit={handleSubmit}>
+          <button classname="App-button"
             type="submit">Submit</button>
       </form>
 
