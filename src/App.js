@@ -24,6 +24,40 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:92b669d5-3f6f-42e4-ac66-937802f7c608',
 });
 
+var params = {
+  Destination: { /* required */
+    CcAddresses: [
+      'davenator@live.ie',
+      /* more items */
+    ],
+    ToAddresses: [
+      'david@telecomstack.com',
+      /* more items */
+    ]
+  },
+  Message: { /* required */
+    Body: { /* required */
+      Html: {
+       Charset: "UTF-8",
+       Data: "HTML_FORMAT_BODY"
+      },
+      Text: {
+       Charset: "UTF-8",
+       Data: "TEXT_FORMAT_BODY"
+      }
+     },
+     Subject: {
+      Charset: 'UTF-8',
+      Data: 'Test email'
+     }
+    },
+  Source: 't3styt3st3rt0n@gmail.com', /* required */
+  ReplyToAddresses: [
+     'david@telecomstack.com',
+    /* more items */
+  ],
+};
+
 
 const App = () =>{
 
@@ -50,7 +84,16 @@ const App = () =>{
     }
   });
 
-  
+
+  var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+  sendPromise.then(
+    function(data) {
+      console.log(data.MessageId);
+    }).catch(
+      function(err) {
+      console.error(err, err.stack);
+  });
+
 
   const createBucket = async () => {
     setSuccessMsg("");
